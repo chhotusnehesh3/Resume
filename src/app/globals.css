@@ -2,9 +2,9 @@
 
 :root {
   /* Dynamic Baseline - DARK (Hyper Energy) */
-  --bg-color: #050508;
-  --surface-color: rgba(13, 13, 17, 0.82);
-  --surface-border: rgba(255, 255, 255, 0.1);
+  --bg-color: #0d1117; /* SOPHISTICATED DARK - Lighter for readability */
+  --surface-color: rgba(22, 27, 34, 0.88);
+  --surface-border: rgba(255, 255, 255, 0.08);
   
   --clr-comment: #7d8590;
   --clr-keyword: #ff7b72;
@@ -30,8 +30,8 @@
   --link-color: #58a6ff;
   --link-hover: #a5d6ff;
   
-  --scanline-opacity: 0.18;
-  --grain-opacity: 0.04;
+  --scanline-opacity: 0.12; /* REDUCED for better contrast */
+  --grain-opacity: 0.03;
   --card-shadow: 20px 20px 60px #030305, -20px -20px 60px #07070b;
   --max-width: 1000px;
   --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -39,9 +39,9 @@
 }
 
 body.light-mode {
-  --bg-color: #f8fafc;
-  --surface-color: rgba(255, 255, 255, 0.85);
-  --surface-border: rgba(0, 0, 0, 0.1);
+  --bg-color: #ffffff; /* PURE LIGHT - Maximum clarity */
+  --surface-color: rgba(248, 250, 252, 0.9);
+  --surface-border: rgba(0, 0, 0, 0.06);
   
   --clr-comment: #57606a;
   --clr-keyword: #cf222e;
