@@ -6,21 +6,17 @@ import {
   Mail, 
   Phone, 
   MapPin, 
-  ExternalLink, 
   Code2, 
-  Briefcase, 
-  GraduationCap, 
-  Award,
-  ChevronRight,
-  Database,
-  Cloud,
-  Terminal,
-  Layers,
-  Activity,
-  Settings,
-  BookOpen,
-  Sun,
-  Moon
+  Database, 
+  Cloud, 
+  Terminal, 
+  Layers, 
+  Activity, 
+  Settings, 
+  BookOpen, 
+  Sun, 
+  Moon,
+  Award
 } from "lucide-react";
 
 // Brand icons
@@ -41,7 +37,7 @@ const HackerEarthIcon = () => (
 );
 
 // Terminal Wrapper Component
-const TerminalFrame = ({ children }: { children: React.ReactNode }) => (
+const TerminalFrame = ({ children, title = "bash — 80×24" }: { children: React.ReactNode, title?: string }) => (
   <div className={styles.terminal}>
     <div className={styles.terminalHeader}>
       <div className={styles.dots}>
@@ -49,7 +45,7 @@ const TerminalFrame = ({ children }: { children: React.ReactNode }) => (
         <span className={styles.dot} style={{ backgroundColor: '#ffbd2e' }}></span>
         <span className={styles.dot} style={{ backgroundColor: '#27c93f' }}></span>
       </div>
-      <div className={styles.terminalTitle}>bash — 80×24</div>
+      <div className={styles.terminalTitle}>{title}</div>
     </div>
     <div className={styles.terminalBody}>
       {children}
@@ -61,7 +57,6 @@ export default function Home() {
   const [isLightMode, setIsLightMode] = useState(false);
 
   useEffect(() => {
-    // Initial check for system preference
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
       setIsLightMode(true);
     }
@@ -79,12 +74,10 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      {/* Theme Toggle Button */}
       <button 
         onClick={toggleTheme} 
         className="theme-toggle" 
         aria-label="Toggle Theme"
-        title={isLightMode ? "Switch to Dark Mode" : "Switch to Light Mode"}
       >
         {isLightMode ? <Moon size={20} /> : <Sun size={20} />}
       </button>
@@ -107,28 +100,13 @@ export default function Home() {
                <MapPin size={14} /> <span>Navi Mumbai, IN</span>
              </div>
            </div>
-
-           <div className={styles.socialHeader}>
-             <a href="https://github.com/chhotusnehesh3" target="_blank" className={styles.socialLink} title="GitHub">
-               <GithubIcon />
-             </a>
-             <a href="https://www.linkedin.com/in/snehesh-mundale" target="_blank" className={styles.socialLink} title="LinkedIn">
-               <LinkedinIcon />
-             </a>
-             <a href="https://www.hackerrank.com/profile/Snehesh_06" target="_blank" className={styles.socialLink} title="HackerRank">
-               <HackerRankIcon />
-             </a>
-             <a href="https://www.hackerearth.com/@mundale_snehesh.me" target="_blank" className={styles.socialLink} title="HackerEarth">
-               <HackerEarthIcon />
-             </a>
-           </div>
         </div>
       </section>
 
       {/* Profile Section */}
-      <section className={`${styles.section} ${styles.clrProfile} reveal`} style={{ animationDelay: '0.1s' }}>
+      <section id="profile" className={`${styles.section} reveal`}>
         <h2 className={`${styles.sectionTitle} mono`}>// 01. Profile</h2>
-        <TerminalFrame>
+        <TerminalFrame title="profile_summary.log">
           <div className={styles.profileContent}>
             <p>
               Software Engineer with 2+ years of experience in software engineering, full-stack development, backend development, 
@@ -144,7 +122,7 @@ export default function Home() {
       </section>
 
       {/* Core Skills */}
-      <section className={`${styles.section} ${styles.clrSkill} reveal`} style={{ animationDelay: '0.2s' }}>
+      <section id="skills" className={`${styles.section} reveal`}>
         <h2 className={`${styles.sectionTitle} mono`}>// 02. Core_Skills</h2>
         <div className={styles.skillsGrid}>
           <div className={styles.skillCategoryCard}>
@@ -174,21 +152,6 @@ export default function Home() {
               <span className="mono">Goroutines</span>
               <span className="mono">Auth (JWT/OAuth2)</span>
               <span className="mono">Clean Architecture</span>
-            </div>
-          </div>
-
-          <div className={styles.skillCategoryCard}>
-            <div className={styles.categoryHeader}>
-              <ExternalLink size={18} className={styles.categoryIcon} />
-              <h3 className="mono">Frontend</h3>
-            </div>
-            <div className={styles.skillTags}>
-              <span className="mono">React JS</span>
-              <span className="mono">Angular</span>
-              <span className="mono">HTML5/CSS3</span>
-              <span className="mono">SCSS</span>
-              <span className="mono">Tailwind</span>
-              <span className="mono">Responsive</span>
             </div>
           </div>
 
@@ -281,9 +244,9 @@ export default function Home() {
       </section>
 
       {/* Work Experience */}
-      <section className={`${styles.section} ${styles.clrExp} reveal`} style={{ animationDelay: '0.3s' }}>
+      <section id="experience" className={`${styles.section} reveal`}>
         <h2 className={`${styles.sectionTitle} mono`}>// 03. Experience</h2>
-        <TerminalFrame>
+        <TerminalFrame title="work_history.sh">
           <div className={styles.experienceCard}>
             <div className={styles.cardHeader}>
               <h3 className={`${styles.company} mono`}>Jio Platforms Limited</h3>
@@ -298,17 +261,16 @@ export default function Home() {
               <li>Established a secure <strong>document management system</strong> using GCS with encryption, <strong>RBAC</strong>, watermarking, and audit logging, leveraging WebSockets for real-time updates.</li>
               <li>Streamlined and automated <strong>internal workflows, alerts, and support processes</strong>, reducing manual effort by <strong>40%</strong> and improving turnaround time.</li>
               <li>Collaborated with cross-functional teams to resolve issues, reducing customer onboarding time to <strong>&lt;1 day</strong>.</li>
-              <li>Gained foundational knowledge of Docker, CI/CD pipelines, and Azure Repos/Git.</li>
             </ul>
           </div>
         </TerminalFrame>
       </section>
 
       {/* Projects */}
-      <section className={`${styles.section} ${styles.clrProj} reveal`} style={{ animationDelay: '0.4s' }}>
+      <section id="projects" className={`${styles.section} reveal`}>
         <h2 className={`${styles.sectionTitle} mono`}>// 04. Projects</h2>
         <div className={styles.projectGrid}>
-          <TerminalFrame>
+          <TerminalFrame title="jiocx_coreops.go">
             <div className={styles.projectCard}>
               <div className={styles.projectHeader}>
                 <h3 className={`${styles.projectTitle} mono`}>JIOCX - CoreOps Platform</h3>
@@ -316,11 +278,11 @@ export default function Home() {
               </div>
               <p className={styles.tagline}>SMS, RCS, WhatsApp, EasyPhone, Voice</p>
               <ul className={styles.projectBullets}>
-                <li>Built a full-scale <strong>CRM platform</strong> for CPaaS services to streamline the customer lifecycle from onboarding to revenue realization.</li>
-                <li>Formulated a <strong>modular backend system in Go</strong> for account management, proposals, legal workflows, sales orders, billing, and revenue recognition.</li>
-                <li>Architected relational client master data models and established secure document storage on <strong>GCS with encryption and RBAC</strong>.</li>
-                <li>Integrated financial records including <strong>Tally data</strong>, purchase orders, and billing documents to maintain auditable transactions.</li>
-                <li>Enabled internal collaboration through <strong>Notes, Chat, Audit Logs</strong>, and automated email alerts.</li>
+                <li className={styles.bulletList}>Built a full-scale <strong>CRM platform</strong> for CPaaS services to streamline the customer lifecycle from onboarding to revenue realization.</li>
+                <li className={styles.bulletList}>Formulated a <strong>modular backend system in Go</strong> for account management, proposals, legal workflows, sales orders, billing, and revenue recognition.</li>
+                <li className={styles.bulletList}>Architected relational client master data models and established secure document storage on <strong>GCS with encryption and RBAC</strong>.</li>
+                <li className={styles.bulletList}>Integrated financial records including <strong>Tally data</strong>, purchase orders, and billing documents to maintain auditable transactions.</li>
+                <li className={styles.bulletList}>Enabled internal collaboration through <strong>Notes, Chat, Audit Logs</strong>, and automated email alerts.</li>
               </ul>
               <div className={styles.techStack}>
                 <span className={`${styles.tag} mono`}>Golang</span>
@@ -331,17 +293,17 @@ export default function Home() {
             </div>
           </TerminalFrame>
 
-          <TerminalFrame>
+          <TerminalFrame title="kpi_portal.go">
             <div className={styles.projectCard}>
               <div className={styles.projectHeader}>
                 <h3 className={`${styles.projectTitle} mono`}>KPI Dashboard Portal</h3>
               </div>
               <p className={styles.tagline}>Performance and Analytics for CPaaS</p>
               <ul className={styles.projectBullets}>
-                <li>Built a real-time KPI dashboard leveraging <strong>Concurrency (Goroutines, Channels)</strong> and <strong>Redis</strong> to track sophisticated metrics including <strong>Revenue Projections, Revenue Outstanding, and deep-dive Analytics</strong>.</li>
-                <li>Developed multi-factor <strong>Traffic Analysis</strong> engines supporting all product lines, each with unique parameters and specialized feature sets.</li>
-                <li>Engineered <strong>Automated Alerting systems and Auto-Emailers</strong> that trigger based on intelligently detected traffic reductions or anomalies, ensuring proactive support.</li>
-                <li>Enabled business leaders to analyze client engagement and performance trends through centralized real-time traffic analytics across the entire CPaaS ecosystem.</li>
+                <li className={styles.bulletList}>Built a real-time KPI dashboard leveraging <strong>Concurrency (Goroutines, Channels)</strong> and <strong>Redis</strong> to track sophisticated metrics including <strong>Revenue Projections, Revenue Outstanding, and deep-dive Analytics</strong>.</li>
+                <li className={styles.bulletList}>Developed multi-factor <strong>Traffic Analysis</strong> engines supporting all product lines, each with unique parameters and specialized feature sets.</li>
+                <li className={styles.bulletList}>Engineered <strong>Automated Alerting systems and Auto-Emailers</strong> that trigger based on intelligently detected traffic reductions or anomalies, ensuring proactive support.</li>
+                <li className={styles.bulletList}>Enabled business leaders to analyze client engagement and performance trends through centralized real-time traffic analytics across the entire CPaaS ecosystem.</li>
               </ul>
               <div className={styles.techStack}>
                 <span className={`${styles.tag} mono`}>Go</span>
@@ -353,18 +315,18 @@ export default function Home() {
             </div>
           </TerminalFrame>
 
-          <TerminalFrame>
+          <TerminalFrame title="prism_engine.go">
             <div className={styles.projectCard}>
               <div className={styles.projectHeader}>
                 <h3 className={`${styles.projectTitle} mono`}>Jio Prism</h3>
               </div>
               <p className={styles.tagline}>Examination and Proctoring Platform</p>
               <ul className={styles.projectBullets}>
-                <li>Built a <strong>multi-tenant online examination platform</strong> with tenant isolation, role-based access control, and scalable architecture.</li>
-                <li>Delivered backend services in <strong>Golang</strong> and a responsive frontend using <strong>React JS</strong>.</li>
-                <li>Integrated <strong>MediaPipe</strong> for advanced proctoring and <strong>Judge0</strong> for secure, scalable coding compilers.</li>
-                <li>Implemented <strong>unit and integration tests</strong> to validate business logic and ensure API reliability.</li>
-                <li>Optimized system performance integrating <strong>Redis caching</strong> to support concurrent exam sessions and scalability.</li>
+                <li className={styles.bulletList}>Built a <strong>multi-tenant online examination platform</strong> with tenant isolation, role-based access control, and scalable architecture.</li>
+                <li className={styles.bulletList}>Delivered backend services in <strong>Golang</strong> and a responsive frontend using <strong>React JS</strong>.</li>
+                <li className={styles.bulletList}>Integrated <strong>MediaPipe</strong> for advanced proctoring and <strong>Judge0</strong> for secure, scalable coding compilers.</li>
+                <li className={styles.bulletList}>Implemented <strong>unit and integration tests</strong> to validate business logic and ensure API reliability.</li>
+                <li className={styles.bulletList}>Optimized system performance integrating <strong>Redis caching</strong> to support concurrent exam sessions and scalability.</li>
               </ul>
               <div className={styles.techStack}>
                 <span className={`${styles.tag} mono`}>Golang</span>
@@ -379,23 +341,29 @@ export default function Home() {
       </section>
 
       {/* Education & Certs */}
-      <section className={`${styles.section} ${styles.clrEdu} reveal`} style={{ animationDelay: '0.5s' }}>
+      <section id="education" className={`${styles.section} reveal`}>
         <div className={styles.dualGrid}>
           <div>
             <h2 className={`${styles.sectionTitle} mono`}>// 05. Education</h2>
-            <div className={styles.timeline}>
-              <div className={styles.eduItem}>
-                <h4 className={`${styles.eduTitle} mono`}>PG Diploma - DAC</h4>
-                <p className={styles.eduDetail}>C-DAC Mumbai | 2023 – 2024</p>
+            <div className={styles.eduTimeline}>
+              <div className={styles.eduNode}>
+                <div className={styles.eduHeader}>
+                  <span className={styles.eduSchool}>C-DAC Kharghar, Navi Mumbai</span>
+                  <h3 className={styles.eduTitle}>PG Diploma - DAC</h3>
+                  <span className={styles.eduDate}>2023 – 2024</span>
+                </div>
               </div>
-              <div className={styles.eduItem}>
-                <h4 className={`${styles.eduTitle} mono`}>B.E. Mechanical Engineering</h4>
-                <p className={styles.eduDetail}>G.H. Raisoni College | 2018 – 2022</p>
+              <div className={styles.eduNode}>
+                <div className={styles.eduHeader}>
+                  <span className={styles.eduSchool}>G.H. Raisoni College of Engineering, Nagpur</span>
+                  <h3 className={styles.eduTitle}>B.E. Mechanical Engineering</h3>
+                  <span className={styles.eduDate}>2018 – 2022</span>
+                </div>
               </div>
             </div>
           </div>
           <div>
-            <h2 className={`${styles.sectionTitle} mono`}>// 06. Certs</h2>
+            <h2 className={`${styles.sectionTitle} mono`}>// 06. Certificates</h2>
             <div className={styles.skillList}>
               <span className={`${styles.skillItem} mono`}><Award size={14} style={{ marginRight: '8px' }}/>Java</span>
               <span className={`${styles.skillItem} mono`}><Award size={14} style={{ marginRight: '8px' }}/>React</span>
@@ -406,7 +374,7 @@ export default function Home() {
       </section>
 
       {/* Profiles */}
-      <section className={`${styles.section} reveal`} style={{ animationDelay: '0.6s' }}>
+      <section id="socials" className={`${styles.section} reveal`}>
         <h2 className={`${styles.sectionTitle} mono`}>// 07. Socials</h2>
         <div className={styles.profilesRow}>
            <a href="https://github.com/chhotusnehesh3" target="_blank" className={`${styles.profileBox} glass`}>
