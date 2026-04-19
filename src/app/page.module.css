@@ -247,6 +247,13 @@
 }
 
 /* Skills GRID */
+.certsColumn {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .skillsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

@@ -362,7 +362,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div>
+          <div className={styles.certsColumn}>
             <h2 className={`${styles.sectionTitle} mono`}>// 06. Certificates</h2>
             <div className={styles.skillList}>
               <span className={`${styles.skillItem} mono`}><Award size={14} style={{ marginRight: '8px' }}/>Java</span>
