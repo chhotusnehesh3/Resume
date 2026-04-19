@@ -313,9 +313,10 @@
 
 .skillList {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 15px;
-  justify-content: center; /* CENTERED */
+  align-items: center; /* CENTERED in column */
+  justify-content: center;
 }
 
 .skillItem {
@@ -328,6 +329,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: fit-content;
+  min-width: 180px; /* ENSURE uniform look */
 }
 
 .skillItem:hover {
