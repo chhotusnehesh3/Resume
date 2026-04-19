@@ -2,11 +2,11 @@
 
 :root {
   /* Dynamic Baseline - DARK (Hyper Energy) */
-  --bg-color: #0d1117; /* SOPHISTICATED DARK - Lighter for readability */
-  --surface-color: rgba(22, 27, 34, 0.88);
-  --surface-border: rgba(255, 255, 255, 0.08);
+  --bg-color: #161b22; /* BALANCED DARK - Better visibility */
+  --surface-color: rgba(22, 27, 34, 0.92);
+  --surface-border: rgba(255, 255, 255, 0.12);
   
-  --clr-comment: #7d8590;
+  --clr-comment: #8b949e;
   --clr-keyword: #ff7b72;
   --clr-func: #d2a8ff;
   --clr-string: #7ee787;
@@ -39,20 +39,20 @@
 }
 
 body.light-mode {
-  --bg-color: #ffffff; /* PURE LIGHT - Maximum clarity */
-  --surface-color: rgba(248, 250, 252, 0.9);
-  --surface-border: rgba(0, 0, 0, 0.06);
+  --bg-color: #ffffff;
+  --surface-color: rgba(243, 246, 249, 0.95);
+  --surface-border: rgba(0, 0, 0, 0.1);
   
   --clr-comment: #57606a;
-  --clr-keyword: #cf222e;
-  --clr-func: #8250df;
-  --clr-string: #116329;
-  --clr-var: #953800;
+  --clr-keyword: #cf222e; /* DEEPER for light-mode */
+  --clr-func: #6f42c1;   /* DEEPER for light-mode */
+  --clr-string: #1a7f37; /* DEEPER for light-mode */
+  --clr-var: #af4e11;    /* DEEPER for light-mode */
   --clr-const: #0550ae;
   
-  --text-primary: #1f2328;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
+  --text-primary: #000000;   /* MAXIMUM CONTRAST */
+  --text-secondary: #0d1117; /* DARKER for visibility */
+  --text-muted: #57606a;
   
   --link-color: #0969da;
   --link-hover: #033d8b;
