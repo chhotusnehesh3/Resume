@@ -73,14 +73,39 @@ export default function Home() {
   const toggleTheme = () => setIsLightMode(!isLightMode);
 
   return (
-    <main className={styles.main}>
-      <button 
-        onClick={toggleTheme} 
-        className="theme-toggle" 
-        aria-label="Toggle Theme"
-      >
-        {isLightMode ? <Moon size={20} /> : <Sun size={20} />}
-      </button>
+    <>
+      <nav className={`${styles.navbar} glass`}>
+        <div className={styles.navContent}>
+           <div className={styles.navLogo}>
+             <span className="mono">&gt; SNEHESH</span>
+           </div>
+           <div className={styles.navLinks}>
+             <a href="tel:+918483869326" className={styles.navItem}>
+               <Phone size={14} /> <span className={`${styles.navText} mono`}>8483869326</span>
+             </a>
+             <a 
+               href="mailto:mundale.snehesh@gmail.com?subject=Opportunity%20Inquiry%20-%20Snehesh%20Mundale&body=Hi%20Snehesh,%0A%0AI%20am%20interested%20in%20connecting%20with%20you%20regarding%20an%20opportunity..." 
+               className={styles.navItem}
+             >
+               <Mail size={14} /> <span className={`${styles.navText} mono`}>mundale.snehesh@gmail.com</span>
+             </a>
+             <div className={`${styles.navItem} ${styles.hideMobile}`}>
+               <MapPin size={14} /> <span className={`${styles.navText} mono`}>Navi Mumbai, IN</span>
+             </div>
+             
+             <button 
+               onClick={toggleTheme} 
+               className={styles.navThemeToggle} 
+               aria-label="Toggle Theme"
+             >
+               {isLightMode ? <Moon size={18} /> : <Sun size={18} />}
+             </button>
+           </div>
+        </div>
+      </nav>
+
+      <main className={styles.main}>
+
 
       {/* Hero Section */}
       <section className={`${styles.hero} reveal`}>
@@ -89,7 +114,7 @@ export default function Home() {
            <h1 className={styles.name}>SNEHESH MUNDALE</h1>
            <p className={`${styles.role} mono`}>Software_Engineer.exe</p>
            
-           <div className={styles.contactInfo}>
+           <div className={`${styles.contactInfo} ${styles.showOnlyMobile}`}>
              <a href="tel:+918483869326" className={styles.contactItem}>
                <Phone size={14} /> <span>8483869326</span>
              </a>
@@ -125,7 +150,7 @@ export default function Home() {
       <section id="skills" className={`${styles.section} reveal`}>
         <h2 className={`${styles.sectionTitle} mono`}>// 02. Core_Skills</h2>
         <div className={styles.skillsGrid}>
-          <div className={styles.skillCategoryCard}>
+          <div className={`${styles.skillCategoryCard} ${styles.programming}`}>
             <div className={styles.categoryHeader}>
               <Code2 size={18} className={styles.categoryIcon} />
               <h3 className="mono">Programming</h3>
@@ -140,22 +165,22 @@ export default function Home() {
             </div>
           </div>
 
-          <div className={styles.skillCategoryCard}>
+          <div className={`${styles.skillCategoryCard} ${styles.backend}`}>
             <div className={styles.categoryHeader}>
               <Layers size={18} className={styles.categoryIcon} />
               <h3 className="mono">Backend</h3>
             </div>
             <div className={styles.skillTags}>
-              <span className="mono">Microservices</span>
-              <span className="mono">Node.js</span>
               <span className="mono">REST APIs</span>
+              <span className="mono">Node.js</span>
               <span className="mono">Goroutines</span>
+              <span className="mono">Microservices</span>
               <span className="mono">Auth (JWT/OAuth2)</span>
               <span className="mono">Clean Architecture</span>
             </div>
           </div>
 
-          <div className={styles.skillCategoryCard}>
+          <div className={`${styles.skillCategoryCard} ${styles.database}`}>
             <div className={styles.categoryHeader}>
               <Database size={18} className={styles.categoryIcon} />
               <h3 className="mono">Databases</h3>
@@ -171,37 +196,38 @@ export default function Home() {
             </div>
           </div>
 
-          <div className={styles.skillCategoryCard}>
+          <div className={`${styles.skillCategoryCard} ${styles.devops}`}>
             <div className={styles.categoryHeader}>
               <Cloud size={18} className={styles.categoryIcon} />
               <h3 className="mono">Cloud_DevOps</h3>
             </div>
             <div className={styles.skillTags}>
               <span className="mono">Docker</span>
+              <span className="mono">Git/Azure</span>
               <span className="mono">K8s</span>
               <span className="mono">CI/CD</span>
-              <span className="mono">Git/Azure</span>
               <span className="mono">AWS</span>
               <span className="mono">GCS</span>
               <span className="mono">Linux</span>
             </div>
           </div>
 
-          <div className={styles.skillCategoryCard}>
+          <div className={`${styles.skillCategoryCard} ${styles.ai}`}>
             <div className={styles.categoryHeader}>
               <Terminal size={18} className={styles.categoryIcon} />
               <h3 className="mono">AI_Productivity</h3>
             </div>
             <div className={styles.skillTags}>
-              <span className="mono">ChatGPT/Claude</span>
-              <span className="mono">Copilot</span>
+              <span className="mono">Claude</span>
+              <span className="mono">Figma</span>
               <span className="mono">n8n</span>
               <span className="mono">GoogleFlow</span>
-              <span className="mono">Figma</span>
+              <span className="mono">ChatGPT</span>
+              <span className="mono">Copilot</span>
             </div>
           </div>
 
-          <div className={styles.skillCategoryCard}>
+          <div className={`${styles.skillCategoryCard} ${styles.monitoring}`}>
             <div className={styles.categoryHeader}>
               <Activity size={18} className={styles.categoryIcon} />
               <h3 className="mono">Monitoring</h3>
@@ -214,21 +240,23 @@ export default function Home() {
             </div>
           </div>
 
-          <div className={styles.skillCategoryCard}>
+          <div className={`${styles.skillCategoryCard} ${styles.tools}`}>
             <div className={styles.categoryHeader}>
               <Settings size={18} className={styles.categoryIcon} />
               <h3 className="mono">Tools</h3>
             </div>
             <div className={styles.skillTags}>
-              <span className="mono">Postman</span>
               <span className="mono">Antigravity</span>
+              <span className="mono">Git</span>
               <span className="mono">VS Code</span>
+              <span className="mono">Postman</span>
               <span className="mono">Eclipse</span>
               <span className="mono">IntelliJ</span>
+              <span className="mono">DBeaver</span>
             </div>
           </div>
 
-          <div className={styles.skillCategoryCard}>
+          <div className={`${styles.skillCategoryCard} ${styles.fundamentals}`}>
             <div className={styles.categoryHeader}>
               <BookOpen size={18} className={styles.categoryIcon} />
               <h3 className="mono">Fundamentals</h3>
@@ -274,15 +302,15 @@ export default function Home() {
             <div className={styles.projectCard}>
               <div className={styles.projectHeader}>
                 <h3 className={`${styles.projectTitle} mono`}>JIOCX - CoreOps Platform</h3>
-                <span className={`${styles.projectBadge} mono`}>FEATURED</span>
+                {/* <span className={`${styles.projectBadge} mono`}>FEATURED</span> */}
               </div>
-              <p className={styles.tagline}>SMS, RCS, WhatsApp, EasyPhone, Voice</p>
-              <ul className={styles.projectBullets}>
-                <li className={styles.bulletList}>Built a full-scale <strong>CRM platform</strong> for CPaaS services to streamline the customer lifecycle from onboarding to revenue realization.</li>
-                <li className={styles.bulletList}>Formulated a <strong>modular backend system in Go</strong> for account management, proposals, legal workflows, sales orders, billing, and revenue recognition.</li>
-                <li className={styles.bulletList}>Architected relational client master data models and established secure document storage on <strong>GCS with encryption and RBAC</strong>.</li>
-                <li className={styles.bulletList}>Integrated financial records including <strong>Tally data</strong>, purchase orders, and billing documents to maintain auditable transactions.</li>
-                <li className={styles.bulletList}>Enabled internal collaboration through <strong>Notes, Chat, Audit Logs</strong>, and automated email alerts.</li>
+              <p className={styles.tagline}>CRM Platform for CPaaS services</p>
+              <ul className={`${styles.projectBullets} ${styles.bulletList}`}>
+                <li>Built a full-scale <strong>CRM platform</strong> for CPaaS services to streamline the customer lifecycle from onboarding to revenue realization.</li>
+                <li>Formulated a <strong>modular backend system in Go</strong> for account management, proposals, legal workflows, sales orders, billing, sales goal tracking and revenue recognition.</li>
+                <li>Architected relational client master data models and established secure document storage on <strong>GCS with encryption and RBAC</strong>.</li>
+                <li>Integrated financial records including <strong>Tally data</strong>, purchase orders, and billing documents to maintain auditable transactions.</li>
+                <li>Enabled internal collaboration through <strong>Notes, Chat, Audit Logs, Call Logs, Call Transcripts</strong>, and automated email alerts.</li>
               </ul>
               <div className={styles.techStack}>
                 <span className={`${styles.tag} mono`}>Golang</span>
@@ -298,12 +326,12 @@ export default function Home() {
               <div className={styles.projectHeader}>
                 <h3 className={`${styles.projectTitle} mono`}>KPI Dashboard Portal</h3>
               </div>
-              <p className={styles.tagline}>Performance and Analytics for CPaaS</p>
-              <ul className={styles.projectBullets}>
-                <li className={styles.bulletList}>Built a real-time KPI dashboard leveraging <strong>Concurrency (Goroutines, Channels)</strong> and <strong>Redis</strong> to track sophisticated metrics including <strong>Revenue Projections, Revenue Outstanding, and deep-dive Analytics</strong>.</li>
-                <li className={styles.bulletList}>Developed multi-factor <strong>Traffic Analysis</strong> engines supporting all product lines, each with unique parameters and specialized feature sets.</li>
-                <li className={styles.bulletList}>Engineered <strong>Automated Alerting systems and Auto-Emailers</strong> that trigger based on intelligently detected traffic reductions or anomalies, ensuring proactive support.</li>
-                <li className={styles.bulletList}>Enabled business leaders to analyze client engagement and performance trends through centralized real-time traffic analytics across the entire CPaaS ecosystem.</li>
+              <p className={styles.tagline}>Performance and Analytics for SMS, RCS, WhatsApp, Email, Voice</p>
+              <ul className={`${styles.projectBullets} ${styles.bulletList}`}>
+                <li>Built a real-time KPI dashboard leveraging <strong>Concurrency (Goroutines, Channels)</strong> and <strong>Redis</strong> to track sophisticated metrics including <strong>Revenue Projections, Revenue Outstanding, and deep-dive Analytics</strong>.</li>
+                <li>Developed multi-factor <strong>Traffic Analysis</strong> engines supporting all product lines, each with unique parameters and specialized feature sets.</li>
+                <li>Engineered <strong>Automated Alerting systems and Auto-Emailers</strong> that trigger based on intelligently detected traffic reductions or anomalies, ensuring proactive support.</li>
+                <li>Enabled business leaders to analyze client engagement and performance trends through centralized real-time traffic analytics across the entire CPaaS ecosystem.</li>
               </ul>
               <div className={styles.techStack}>
                 <span className={`${styles.tag} mono`}>Go</span>
@@ -321,12 +349,12 @@ export default function Home() {
                 <h3 className={`${styles.projectTitle} mono`}>Jio Prism</h3>
               </div>
               <p className={styles.tagline}>Examination and Proctoring Platform</p>
-              <ul className={styles.projectBullets}>
-                <li className={styles.bulletList}>Built a <strong>multi-tenant online examination platform</strong> with tenant isolation, role-based access control, and scalable architecture.</li>
-                <li className={styles.bulletList}>Delivered backend services in <strong>Golang</strong> and a responsive frontend using <strong>React JS</strong>.</li>
-                <li className={styles.bulletList}>Integrated <strong>MediaPipe</strong> for advanced proctoring and <strong>Judge0</strong> for secure, scalable coding compilers.</li>
-                <li className={styles.bulletList}>Implemented <strong>unit and integration tests</strong> to validate business logic and ensure API reliability.</li>
-                <li className={styles.bulletList}>Optimized system performance integrating <strong>Redis caching</strong> to support concurrent exam sessions and scalability.</li>
+              <ul className={`${styles.projectBullets} ${styles.bulletList}`}>
+                <li>Built a <strong>multi-tenant online examination platform</strong> with tenant isolation, role-based access control, and scalable architecture.</li>
+                <li>Delivered backend services in <strong>Golang</strong> and a responsive frontend using <strong>React JS</strong>.</li>
+                <li>Integrated <strong>MediaPipe</strong> for advanced proctoring and <strong>Judge0</strong> for secure, scalable coding compilers.</li>
+                <li>Implemented <strong>unit and integration tests</strong> to validate business logic and ensure API reliability.</li>
+                <li>Optimized system performance integrating <strong>Redis caching</strong> to support concurrent exam sessions and scalability.</li>
               </ul>
               <div className={styles.techStack}>
                 <span className={`${styles.tag} mono`}>Golang</span>
@@ -356,7 +384,7 @@ export default function Home() {
               <div className={styles.eduNode}>
                 <div className={styles.eduHeader}>
                   <span className={styles.eduSchool}>G.H. Raisoni College of Engineering, Nagpur</span>
-                  <h3 className={styles.eduTitle}>B.E. Mechanical Engineering</h3>
+                  <h3 className={styles.eduTitle}>Bachelor of Engineering - Mechanical Engineering</h3>
                   <span className={styles.eduDate}>2018 – 2022</span>
                 </div>
               </div>
@@ -401,6 +429,7 @@ export default function Home() {
         <p className="mono">terminate --session=now</p>
         <p className="mono" style={{ opacity: 0.5, fontSize: '0.8rem' }}>© {new Date().getFullYear()} Snehesh Mundale | built_with_next_v15</p>
       </footer>
-    </main>
+      </main>
+    </>
   );
 }
